@@ -1,0 +1,40 @@
+[project]
+name = "edu-c2-047"
+version = "1.0.2"
+description = "Student Accommodation Plan Consistency Agent — AgentCore Template"
+requires-python = ">=3.11"
+# agenticstar-agentcore is NOT a public-PyPI dependency; provided by CI
+# (installed from the package registry).
+# Pinning it here would break `pip install -e .` on developer machines.
+dependencies = [
+    "agenticstar-agentcore[marketplace,openai,platform-rag,platform-memory,platform-db,platform-storage-azure]==1.0.3",
+    "pyyaml==6.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.0.3",
+    "pytest-cov==5.0.0",
+    "pytest-asyncio==1.4.0",
+    "ruff==0.4.4",
+    "mypy==1.10.0",
+]
+
+[build-system]
+requires = ["setuptools==68.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+# AgentCore 1.0.x has no py.typed marker. Preserve strict project checks while
+# treating that package boundary as untyped and tolerating legacy containers.
+disable_error_code = ["import-untyped"]
+disallow_subclassing_any = false
+disallow_any_generics = false
+disallow_untyped_defs = false
+warn_return_any = false

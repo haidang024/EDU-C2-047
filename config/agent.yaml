@@ -1,0 +1,24 @@
+# AgentRegistry manifest for EDU-C2-047. Registry keys must remain at root.
+id: "EDU-C2-047"
+name: "Student Accommodation Plan Consistency Agent"
+namespace: "agent1000"
+version: "1.0.2"
+enabled: true
+category: "Cat 2"
+generation_mode: "llm"
+industry: "EDU"
+
+# Compatibility metadata; the concrete class directly inherits AgentBaseGraph.
+base_type: "AgentBaseGraph"
+class: "src.graph.graph.Graph"
+
+required_trust_level: "VERIFIED_EXTERNAL"
+
+requires:
+  # Only API retrieval calls require this key; JSON fixtures need no secret.
+  secrets:
+    - "ACCOMMODATION_API_KEY"
+    - "AZURE_OPENAI_API_KEY"
+    - "AZURE_OPENAI_ENDPOINT"
+    - "AZURE_OPENAI_DEPLOYMENT"
+  extras: ["openai"]

@@ -1,0 +1,24 @@
+# Runtime parameters loaded independently from config/agent.yaml.
+max_retry: 3
+timeout_s: 60
+memory_enabled: false
+llm_provider: "azure_openai"
+llm_model: "azure-openai-deployment"
+
+hitl:
+  enabled: false
+
+freshness_threshold_days: 90
+max_records_per_run: 200
+
+approved_source_types:
+  - api
+  - csv
+  - json
+
+approved_guidance_schemes:
+  - https
+  - s3
+  - gs
+
+output_format: markdown
